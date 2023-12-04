@@ -73,6 +73,11 @@ class _HomePageState extends State<HomePage> {
                   TextField(
                     controller: nameController,
                   ),
+                  Container(
+                    height: 300,
+                    width: 300,
+                    color: Colors.red,
+                  ),
                   const SizedBox(height: 20),
                   ElevatedButton(
                     onPressed: addItemToList,
