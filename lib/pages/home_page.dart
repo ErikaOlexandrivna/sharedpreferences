@@ -45,10 +45,10 @@ class _HomePageState extends State<HomePage> {
   }
 
   void addItemToList() {
-   setState(() {
-     stringList.add(nameController.text);
-     nameController.clear();
-   });
+    setState(() {
+      stringList.add(nameController.text);
+      nameController.clear();
+    });
     saveItemToList();
   }
 
@@ -56,7 +56,6 @@ class _HomePageState extends State<HomePage> {
   Future<void> saveItemToList() async {
     final prefs = await SharedPreferences.getInstance();
     prefs.setStringList('list_string', stringList);
-
   }
 
   @override
@@ -91,7 +90,7 @@ class _HomePageState extends State<HomePage> {
                         itemCount: stringList.length,
                         itemBuilder: (context, index) {
                           return Padding(
-                            padding: const  EdgeInsets.symmetric(
+                            padding: const EdgeInsets.symmetric(
                               vertical: 10,
                             ),
                             child: Text(stringList[index]),
