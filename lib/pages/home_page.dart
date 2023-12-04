@@ -77,7 +77,7 @@ class _HomePageState extends State<HomePage> {
                   ElevatedButton(
                     onPressed: addItemToList,
                     child: const Text(
-                      'Зберегти дані',
+                      'Зберегти',
                     ),
                   ),
                   Expanded(
