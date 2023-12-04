@@ -74,8 +74,8 @@ class _HomePageState extends State<HomePage> {
                     controller: nameController,
                   ),
                   Container(
-                    height: 300,
-                    width: 300,
+                    height: 100,
+                    width: 100,
                     color: Colors.red,
                   ),
                   const SizedBox(height: 20),
