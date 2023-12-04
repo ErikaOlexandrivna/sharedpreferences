@@ -73,6 +73,7 @@ class _HomePageState extends State<HomePage> {
                   TextField(
                     controller: nameController,
                   ),
+                  const SizedBox(height: 80),
                   Container(
                     height: 100,
                     width: 100,
