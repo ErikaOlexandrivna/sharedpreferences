@@ -23,39 +23,41 @@ class _HomePageState extends State<HomePage> {
 //Запис стрінги
   Future<void> saveData() async {
     final prefs = await SharedPreferences.getInstance();
-    prefs.setString('string', nameController.text);
+    prefs.setString('string', nameController.text); // Записуєм дані у форматі ключ - значення. Ключ придумовуємо самі.
     nameController.clear();
     getData();
   }
 
-  //Читання стрінги  і ліста
+  //Читання стрінги і ліста
   Future<void> getData() async {
     isLoading = true;
     Future.delayed(
       const Duration(
-        seconds: 6,
+        seconds: 2
       ),
     );
     final prefs = await SharedPreferences.getInstance();
     setState(() {
-      stringFromLocalData = prefs.getString('string') ?? '';
-      stringList = prefs.getStringList('list_string') ?? [];
+      stringFromLocalData = prefs.getString('string') ?? ''; // Читаєм стрінгу по ключу і відразу записуєм значення з локальної бази в нашу зміну
+      stringList = prefs.getStringList('list_string') ?? []; // Читаєм список по ключу і відразу записуєм значення з локальної бази в нашу зміну
       isLoading = false;
     });
   }
 
+
+  // Додаєм елемент до списку
   void addItemToList() {
    setState(() {
-     stringList.add(nameController.text);
+     stringList.add(nameController.text); // Додаєм елемнт в зміну - список stringList
      nameController.clear();
    });
-    saveItemToList();
+    saveList(); // Викликаємо метод
   }
 
-  // Зберігаєм елемент до списку в локальну базу
-  Future<void> saveItemToList() async {
+  // Зберігаєм список в локальну базу
+  Future<void> saveList() async {
     final prefs = await SharedPreferences.getInstance();
-    prefs.setStringList('list_string', stringList);
+    prefs.setStringList('list_string', stringList); // Записуєм список в локальну базу
 
   }
 
