@@ -23,7 +23,8 @@ class _HomePageState extends State<HomePage> {
 //Запис стрінги
   Future<void> saveData() async {
     final prefs = await SharedPreferences.getInstance();
-    prefs.setString('string', nameController.text); // Записуєм дані у форматі ключ - значення. Ключ придумовуємо самі.
+    prefs.setString('string',
+        nameController.text); // Записуєм дані у форматі ключ - значення. Ключ придумовуємо самі.
     nameController.clear();
     getData();
   }
@@ -32,25 +33,24 @@ class _HomePageState extends State<HomePage> {
   Future<void> getData() async {
     isLoading = true;
     Future.delayed(
-      const Duration(
-        seconds: 2
-      ),
+      const Duration(seconds: 2),
     );
     final prefs = await SharedPreferences.getInstance();
     setState(() {
-      stringFromLocalData = prefs.getString('string') ?? ''; // Читаєм стрінгу по ключу і відразу записуєм значення з локальної бази в нашу зміну
-      stringList = prefs.getStringList('list_string') ?? []; // Читаєм список по ключу і відразу записуєм значення з локальної бази в нашу зміну
+      stringFromLocalData = prefs.getString('string') ??
+          ''; // Читаєм стрінгу по ключу і відразу записуєм значення з локальної бази в нашу зміну
+      stringList = prefs.getStringList('list_string') ??
+          []; // Читаєм список по ключу і відразу записуєм значення з локальної бази в нашу зміну
       isLoading = false;
     });
   }
 
-
   // Додаєм елемент до списку
   void addItemToList() {
-   setState(() {
-     stringList.add(nameController.text); // Додаєм елемнт в зміну - список stringList
-     nameController.clear();
-   });
+    setState(() {
+      stringList.add(nameController.text); // Додаєм елемнт в зміну - список stringList
+      nameController.clear();
+    });
     saveList(); // Викликаємо метод
   }
 
@@ -58,7 +58,6 @@ class _HomePageState extends State<HomePage> {
   Future<void> saveList() async {
     final prefs = await SharedPreferences.getInstance();
     prefs.setStringList('list_string', stringList); // Записуєм список в локальну базу
-
   }
 
   @override
@@ -80,6 +79,9 @@ class _HomePageState extends State<HomePage> {
                     onPressed: addItemToList,
                     child: const Text(
                       'Зберегти',
+                      style: TextStyle(
+                        fontSize: 14,
+                      ),
                     ),
                   ),
                   Expanded(
@@ -87,7 +89,7 @@ class _HomePageState extends State<HomePage> {
                         itemCount: stringList.length,
                         itemBuilder: (context, index) {
                           return Padding(
-                            padding: const  EdgeInsets.symmetric(
+                            padding: const EdgeInsets.symmetric(
                               vertical: 10,
                             ),
                             child: Text(stringList[index]),
