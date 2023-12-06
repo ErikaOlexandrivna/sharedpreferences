@@ -74,6 +74,7 @@ class _HomePageState extends State<HomePage> {
                   TextField(
                     controller: nameController,
                   ),
+                  const Text('Test'),
                   const SizedBox(height: 20),
                   ElevatedButton(
                     onPressed: addItemToList,
